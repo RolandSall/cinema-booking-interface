@@ -1,0 +1,322 @@
+.card-wrapper {
+  max-width: 500px;
+  min-width: 250px;
+}
+.chipd {
+  padding: 0;
+}
+.chip-holder {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.chip-label {
+  display: block;
+  margin-bottom: 10px;
+  padding: 0;
+}
+
+.chip-holder .igx-chip {
+  flex: 1 0 0%;
+  margin-left: 10px;
+}
+
+.chip-holder .igx-chip:first-of-type {
+  margin-left: 0;
+}
+
+.content-divider {
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+.weather-time {
+  display: flex;
+}
+
+.weather-time span {
+  flex: 1 0 0%;
+  text-align: center;
+  position: relative;
+}
+
+.time-wrapper {
+  padding: 15px 0 5px;
+}
+
+.time-wrapper span::before,
+.time-wrapper span::after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  background: #444;
+}
+.butn {
+  color: #2a628f;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.046875rem;
+  text-transform: uppercase;
+  line-height: 1rem;
+  text-align: center;
+}
+.butn:hover {
+  background: #2b2e59;
+}
+.time-wrapper span::before {
+  height: 5px;
+  bottom: calc(100% + 18px);
+  left: 0;
+}
+
+.time-wrapper span::after {
+  height: 10px;
+  bottom: calc(100% + 13px);
+  left: calc(50% - 0.5px);
+}
+
+.time-wrapper span:first-of-type::before {
+  display: none;
+}
+
+.weather img {
+  height: 100%;
+  width: auto;
+  margin-right: 5px;
+}
+
+.weather,
+.weather-now,
+.big-number {
+  height: 80px;
+  min-height: 80px;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.big-number {
+  line-height: 70px;
+  position: relative;
+  font-size: 90px;
+}
+
+.weather-now {
+  margin-right: 20px;
+  padding-right: 30px;
+}
+
+.temp-unit {
+  font-size: 20px;
+  position: absolute;
+  top: 0;
+  line-height: normal;
+  right: -25px;
+}
+
+.item-container {
+  display: flex;
+  align-items: center;
+}
+
+.day {
+  flex: 1 0 0%;
+}
+
+.degree {
+  margin-left: 30px;
+}
+
+.sample-wrapper--cards .igx-list {
+  width: 100%;
+  height: 0;
+  transition: all 250ms ease-in-out;
+}
+
+.sample-wrapper--cards .igx-list.show {
+  width: 100%;
+  height: 290px;
+}
+
+.w_details__label {
+  margin-left: 5px;
+}
+
+.w_icon {
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.w_details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.weather {
+  margin-bottom: 15px;
+}
+
+.w_details__item {
+  display: flex;
+  align-items: center;
+}
+
+.w_details__icon {
+  margin-right: 10px;
+}
+
+.isSunny {
+  color: #fad024;
+}
+
+.moviegrid-item {
+  margin-bottom: 20px;
+}
+
+.igx-chip__item {
+  padding: 0;
+}
+
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 1.6rem;
+  color: #d3d3d3;
+}
+
+.full {
+  color: red;
+}
+
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: red;
+}
+
+.btnadd {
+  position: right;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+.cnt {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  padding-bottom: 15vh;
+  margin: 0;
+  background: linear-gradient(0deg, #041625, #184974 60%) fixed no-repeat;
+  padding-top: 17vh;
+}
+
+.but {
+  height: 10vh;
+  background-color: rgba(0, 0, 0, 0.541);
+  border-color: rgba(4, 12, 32, 0.699);
+  font-family: "Montserrat", sans-serif;
+  color: white;
+}
+
+.active {
+  background-color: rgba(15, 58, 122, 0.589);
+  border-color: rgba(20, 21, 70, 0.664);
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
+  text-shadow: 2px 2px 5px #2a628f;
+}
+
+h1 {
+  font-size: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.tbl-content {
+  height: 50vh;
+  overflow-x: auto;
+  margin-top: 0px;
+}
+
+.desc {
+  height: 30vh;
+  width: 30vh;
+}
+
+section {
+  margin: 50px;
+}
+
+.imgUrl {
+  height: 3vh;
+  width: 6vw;
+}
+
+.imgUrlPoster {
+  height: 3vh;
+  width: 12vw;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+th {
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  color: #fff;
+}
+
+td {
+  padding: 2vh;
+
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 300;
+  font-size: 12px;
+  color: #fff;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.inp {
+  background: transparent;
+  border-color: transparent;
+  border-bottom: 2px solid #ccc;
+  border-radius: 0;
+  transition: all 0.8s;
+  color: #ccc;
+}
+
+.inp:focus {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  color: #fff;
+  border-bottom: 2px solid #2a628f;
+}
+
+.sel {
+  background-color: transparent;
+  color: #ccc;
+}
+
+.sel:focus {
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+}
+
+label {
+  color: white;
+}

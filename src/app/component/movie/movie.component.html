@@ -1,0 +1,136 @@
+<div class="main  movies" *ngIf="movie">
+  <div
+    class="movie-backdrop"
+    [ngStyle]="{ 'background-image': 'url(' + movie.movieUrlPosterImage + ')' }"
+  ></div>
+  <div class="container">
+    <div class="movie-data row">
+      <div class="col-md-4">
+        <div class="movie-poster">
+          <img
+            class="img-fluid"
+            src="{{ movie.movieUrlImage }}"
+            alt="{{ movie.movieName }}"
+            x
+          />
+          <div class="rating mx-0 row justify-content-center">
+            <ng-template #t let-fill="fill">
+              <span
+                (click)="open(rate)"
+                class="star cursor"
+                [class.full]="fill === 100"
+              >
+                <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+              </span>
+            </ng-template>
+            <ngb-rating
+              rate="{{ movieAvg }}"
+              [starTemplate]="t"
+              [readonly]="true"
+              max="5"
+            >
+            </ngb-rating>
+            <ngb-alert *ngIf="loginCondition" type="warning" (close)="close()"
+              >Please Login First</ngb-alert
+            >
+
+            <ngb-alert *ngIf="RatingFailed" type="warning" (close)="close1()"
+              >Already Commented! This rating will not be submitted</ngb-alert
+            >
+
+            <ng-template #rate let-modal>
+              <div class="ratemod">
+                <div class="modal-header">
+                  <h4 class="modal-title">
+                    Rate This Movie
+                  </h4>
+                  <button
+                    type="button"
+                    class="close"
+                    aria-describedby="modal-title"
+                    (click)="modal.dismiss('Cross click')"
+                  >
+                    <span style="color: white;" aria-hidden="true"
+                      >&times;</span
+                    >
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="m-3">
+                    <span>
+                      Your Rating:
+                    </span>
+                    <ng-template #t let-fill="fill">
+                      <span class="star2 cursor" [class.full]="fill === 100">
+                        <span class="half" [style.width.%]="fill">&#9733;</span
+                        >&#9733;
+                      </span>
+                    </ng-template>
+                    <ngb-rating
+                      [(rate)]="userRating"
+                      [starTemplate]="t"
+                      [readonly]="false"
+                      max="5"
+                    >
+                    </ngb-rating>
+                  </div>
+                  <div>
+                    <span class="m-3">
+                      Your Comment:
+                    </span>
+                    <div class="m-3 form-group">
+                      <textarea
+                        class="form-control"
+                        id="exampleFormControlTextarea1"
+                        rows="3"
+                        [(ngModel)]="ratingComment"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    (click)="modal.dismiss('cancel click')"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    class="btn but"
+                    (click)="rateComment()"
+                    (click)="modal.close('Ok click')"
+                  >
+                    Ok
+                  </button>
+                </div>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 ">
+        <h2 class="movie-title">{{ movie.movieName }}</h2>
+        <div class="movie-info">
+          <p class="movie-overview">{{ movie.movieDescription }}</p>
+          <div class="movie-meta">
+            <dl class="movie meta-director">
+              <dt>Director:</dt>
+              <dd>{{ movie.movieDirectors }}</dd>
+            </dl>
+            <dl class="movie-meta-cast">
+              <dt>Starring:</dt>
+              <dd>{{ movie.movieStars }}</dd>
+            </dl>
+            <dl class="movie-meta-cast">
+              <dt>Running Time:</dt>
+              <dd>{{ movie.movieDuration }}</dd>
+            </dl>
+          </div>
+          <app-movie-cinemas></app-movie-cinemas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

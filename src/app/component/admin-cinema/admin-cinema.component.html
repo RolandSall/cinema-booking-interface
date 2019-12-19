@@ -1,0 +1,206 @@
+<div class="container-fluid cnt">
+  <div class="row justify-content-between" width="100%">
+    <div
+      class="btn-group btn-group-lg col-3"
+      role="group"
+      aria-label="Large button group"
+    >
+      <button type="button" class="but btn" routerLink="/admin/movie">
+        Movie
+      </button>
+      <button type="button" class="but btn active" routerLink="/admin/cinema">
+        Cinema
+      </button>
+      <button type="button" class="but btn" routerLink="/admin/showing/cinemas">
+        Movie event
+      </button>
+    </div>
+    <div class="col-1">
+      <div
+        class="cursor"
+        (click)="toggleDisplay()"
+        style=" font-size: 3em; color: white; margin-right: 2vw;"
+      >
+        <i class="fas fa-plus"></i>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isShow">
+    <section>
+      <div class="container">
+        <ngb-alert *ngIf="warning" type="warning" (close)="close()">{{
+          error
+        }}</ngb-alert>
+        <table cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <th>Cinema ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Manager</th>
+            <th>Phone</th>
+            <th>Seat Capacity</th>
+            <th>Staff</th>
+            <th>Room</th>
+            <th>Delete</th>
+          </tr>
+        </table>
+
+        <div class="tbl-content">
+          <table cellpadding="0" cellspacing="0" border="0">
+            <tr *ngFor="let cinema of cinemas">
+              <td>
+                {{ cinema.cinemaId }}
+              </td>
+              <td>
+                {{ cinema.cinemaName }}
+              </td>
+              <td>
+                {{ cinema.cinemaAddress }}
+              </td>
+              <td>
+                {{ cinema.cinemaManager }}
+              </td>
+              <td>
+                {{ cinema.cinemaPhone }}
+              </td>
+              <td>
+                {{ cinema.cinemaSeatCapacity }}
+              </td>
+              <td>
+                <span
+                  class="cursor"
+                  routerLink="/admin/cinemas/{{ cinema.cinemaId }}/staffs"
+                  style="font-size: 3em; color: #04628f;"
+                >
+                  <i class="fas fa-users"></i>
+                </span>
+              </td>
+              <td>
+                <span
+                  class="cursor"
+                  routerLink="/admin/cinemas/{{ cinema.cinemaId }}/rooms"
+                  style="font-size: 3em; color: #04628f;"
+                >
+                  <i class="fas fa-person-booth"></i>
+                </span>
+              </td>
+              <td>
+                <span
+                  class="cursor"
+                  (click)="open(confirm)"
+                  style="font-size: 3em; color: rgb(245, 19, 19);"
+                >
+                  <i class="fas fa-trash"></i>
+                </span>
+              </td>
+              <ng-template #confirm let-modal>
+                <div class="mod">
+                  <div class="modal-header">
+                    <h4 class="modal-title" id="modal-title">
+                      Cinema Deletion
+                    </h4>
+                    <button
+                      type="button"
+                      class="close"
+                      aria-describedby="modal-title"
+                      (click)="modal.dismiss('Cross click')"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p>
+                      <strong>Are you sure you want to delete cinema? </strong>
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-outline-secondary"
+                      (click)="modal.dismiss('cancel click')"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      (click)="deleteCinema(cinema.cinemaId)"
+                      (click)="modal.close('Ok click')"
+                    >
+                      Ok
+                    </button>
+                  </div>
+                </div>
+              </ng-template>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="container" *ngIf="!isShow">
+    <section>
+      <form
+        [formGroup]="cinemaForm"
+        (ngSubmit)="submitRegistration()"
+        novalidate
+      >
+        <div *ngIf="validMessage != ''">
+          <h3 class="has-info">{{ validMessage }}</h3>
+        </div>
+        <div class="form-group">
+          <label>Cinema Name</label>
+          <input
+            type="text"
+            class="form-control inp"
+            formControlName="cinemaName"
+            required
+            autofocus
+          />
+        </div>
+        <div class="form-group">
+          <label>Cinema Address</label>
+          <input
+            type="email"
+            class="form-control inp"
+            formControlName="cinemaAddress"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label>Cinema Manager</label>
+          <input
+            type="text"
+            class="form-control inp"
+            formControlName="cinemaManager"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label>Cinema Phone</label>
+          <input
+            type="text"
+            class="form-control inp"
+            formControlName="cinemaPhone"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label>Seat Capacity</label>
+          <input
+            type="text"
+            class="form-control inp"
+            formControlName="cinemaSeatCapacity"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn but">
+          Submit
+        </button>
+      </form>
+    </section>
+  </div>
+</div>

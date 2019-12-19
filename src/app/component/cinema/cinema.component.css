@@ -1,0 +1,108 @@
+agm-map {
+  height: 70vh;
+  width: 70vh;
+}
+
+.cnt {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  margin: 0;
+  padding-top: 20vh;
+}
+.cinema-section-detail-custom {
+  border-color: #041625;
+  background-color: rgba(8, 24, 37, 0.836);
+}
+.but {
+  position: absolute;
+  right: 3vw;
+  background-color: rgba(0, 0, 0, 0.541);
+  border-color: rgba(4, 12, 32, 0.699);
+  font-family: "Montserrat", sans-serif;
+  color: white;
+}
+
+.full {
+  color: rgb(255, 238, 0);
+}
+
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: rgb(255, 238, 0);
+}
+
+.rate {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  padding-right: 2vw;
+}
+
+.inf {
+  border-bottom: 2px solid white;
+}
+
+.star2 {
+  position: relative;
+  display: inline-block;
+  font-size: 2rem;
+  color: #d3d3d3;
+  outline: none !important;
+  border: none !important;
+}
+
+.cinema-Branch {
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+.cinema-section {
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  height: 70vh;
+  overflow-y: scroll;
+}
+
+.cinema-section ul li {
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.cinema-section-detail {
+  display: inline-block;
+  padding: 6px 20px;
+  padding-top: 2vh;
+  padding-bottom: 0.5vh;
+  border: 2px solid white;
+  border-bottom: 0;
+  width: 100%;
+}
+
+.tab:hover {
+  background-color: rgba(8, 24, 37, 0.836);
+}
+
+.tab:active {
+  background-color: rgba(8, 24, 37, 0.836);
+}
+
+.cinema-section .cinema-section-detail h2 {
+  display: block;
+  color: #fff;
+  font-size: 20px;
+}
+
+.cinema-section .cinema-section-detail p {
+  color: #e8e7e7dd;
+  font-size: 14px;
+}
+
+.cinema-section .cinema-section-detail-custom a {
+  border-color: #041625;
+  background-color: rgba(8, 24, 37, 0.836);
+}

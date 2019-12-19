@@ -1,0 +1,19 @@
+.slide {
+  width: 100vw;
+  height: 90vh;
+  max-width: 100%;
+  /* padding-top: 6.5vh;
+  background-color: black; */
+}
+.link {
+  color: #e8e7e7dd;
+  text-decoration: none;
+}
+
+.linkd :hover {
+  color: #8a8a8add;
+  text-shadow: 2px 2px 4px #000000;
+}
+.crs{
+  cursor:pointer;
+}

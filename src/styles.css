@@ -1,0 +1,68 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+  height: 100%;
+  margin: 0;
+  background-size: cover;
+  background: linear-gradient(0deg, #041625, #2d78b9 80%) fixed no-repeat;
+  overflow-x: hidden;
+}
+
+.cnt {
+  background: transparent !important;
+}
+
+.modal-content {
+  background-color: rgba(0, 0, 0, 0.0001) !important;
+}
+.mod {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  color: #495057;
+  background-color: transparent !important;
+  border-color: #dee2e6 #dee2e6 #fff;
+  border-bottom-width: 0 !important;
+}
+
+.nav-tabs .nav-link {
+  border: 1px solid transparent;
+  border-bottom: 2px solid #dee2e6 !important;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.nav-tabs {
+  border-bottom: 0 !important;
+}
+
+a .butlink {
+  color: white !important;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+ngb-alert {
+  background-color: rgba(8, 24, 37, 0.836) !important;
+  color: white !important;
+  border-color: transparent !important;
+}
+
+.no-pad {
+  padding: 0 !important;
+  width: 100%;
+  margin: 0 auto !important;
+}

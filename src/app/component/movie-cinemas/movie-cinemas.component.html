@@ -1,0 +1,30 @@
+<div class="cinemas">
+  <div class="cinema">
+    <div *ngIf="loaded" class="cinema-Branch">Cinema Branches</div>
+    <div class="cinema-section">
+      <ul>
+        <li
+          *ngFor="let cinema of cinemas"
+          class="cinema-section-detail"
+          [ngClass]="{
+            'cinema-section-detail-custom': toggleC(cinema.cinemaId)
+          }"
+        >
+          <a
+            (click)="toggleComponent(cinema.cinemaId)"
+            (click)="cinemaSave(cinema.cinemaId)"
+          >
+            <h2>{{ cinema.cinemaName }}</h2>
+            <p>{{ cinema.cinemaAddress }}</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div>
+  <app-movie-cinemas-rooms
+    *ngIf="seeIfToggled()"
+    [cinemaId]="getCinemaId()"
+  ></app-movie-cinemas-rooms>
+</div>

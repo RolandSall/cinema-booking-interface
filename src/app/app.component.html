@@ -1,0 +1,207 @@
+<header class="header container-fluid " (scroll)="onScroll($event)">
+  <div>
+    <nav
+      class="navbar navbar-expand-lg nav-menu"
+      [ngClass]="{
+        'custom-navbar': navb,
+        'navbar-c': !isMenuCollapsed
+      }"
+    >
+      <a class="navbar-brand" routerLink="/"
+        ><span class="span-logo"
+          ><img class="logo" src="../assets/img/favicon.jpg" alt=""/></span
+        >CinemaBooking</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        (click)="isMenuCollapsed = !isMenuCollapsed"
+      >
+        &#9776;
+      </button>
+      <div
+        class="collapse navbar-collapse"
+        [ngbCollapse]="isMenuCollapsed"
+        id="navbarSupportedContent"
+      >
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" id="Home" routerLink="/home"
+              ><span class="nav-word  nav-b">Home</span>
+            </a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" id="Movies" routerLink="/movies"
+              ><span class="nav-word  nav-b">Movies</span></a
+            >
+          </li>
+          <li *ngIf="isAdmin" class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" id="Admin" routerLink="/admin"
+              ><span class="nav-word nav-b">Admin</span></a
+            >
+          </li>
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" id="Admin" routerLink="/cinemas"
+              ><span class="nav-word nav-b">Cinema</span></a
+            >
+          </li>
+        </ul>
+        
+        <div class="row navbar-nav mr-0">
+          <div *ngIf="!loggedIn" class="nav-item login-but my-2 ml-3">
+            <a class="nav-link cursor py-0" (click)="open(confirm)"><span class="nav-word">Login</span></a>
+          </div>
+          <div *ngIf="loggedIn" class="user-but nav-item cursor my-2 ml-3" [routerLinkActive]="['active']">
+            <div *ngIf="!isAdmin" [routerLinkActive]="['active']" routerLink="/profile/{{ userLogin.customerId }}">
+                
+                <a class="nav-link cursor" [routerLinkActive]="['active']"
+                  routerLink="/profile/{{ userLogin.customerId }}">
+                 
+                  <span class="nav-word"> <i class="fas fa-user"> </i> {{ userLogin?.customerFirstName }}</span>
+                  
+                  
+                </a>
+            </div>
+            <div *ngIf="isAdmin" routerLink="/admin">
+                <a class="nav-link cursor" routerLink="/admin"><span class="nav-word"><i class="fas fa-user-cog"></i>
+                    {{ adminLogin?.adminUserName }}</span></a>
+            </div>
+          </div>
+          <div *ngIf="loggedIn" class="nav-item logout-but my-2 ml-3">
+            <a class="nav-link cursor py-0" (click)="logout()"><span class="nav-word">Logout</span></a>
+          </div>
+          <ng-template #confirm let-modal>
+            <div class="modal-body mod">
+              <ngb-tabset class="nav-fill">
+                <ngb-tab>
+                  <ng-template ngbTabTitle class="tab"><span class="tab-tit">Sign in</span></ng-template>
+                  <ng-template ngbTabContent>
+                    <form name="myForm">
+                      <div class="login-container">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label>Username</label>
+                              <input type="text" required class="inp
+                                        form-control" [(ngModel)]="usernameLogin" [ngModelOptions]="{ standalone: true }" />
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label>Password</label>
+                              <input type="password" name="pass" ng-model="user.password" required class="inp form-control"
+                                [(ngModel)]="passwordLogin" [ngModelOptions]="{ standalone: true }" />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-secondary canc" (click)="modal.dismiss('cancel click')">
+                        Cancel
+                      </button>
+                      <button type="button" class="btn but" (click)="login()" (click)="modal.close('Ok click')">
+                        Login
+                      </button>
+                      <button type="button" class="btn but" (click)="loginAsAdmin()" (click)="modal.close('Ok click')">
+                        Login as Admin
+                      </button>
+                    </div>
+                  </ng-template>
+                </ngb-tab>
+                <ngb-tab>
+                  <ng-template ngbTabTitle class="tab"><span class="tab-tit">Sign up</span></ng-template>
+                  <ng-template ngbTabContent>
+                    <div class="container" *ngIf="!isShow">
+                      <section>
+                        <form [formGroup]="loginForm" (ngSubmit)="submitRegistration()" novalidate>
+                          <div class="login-container">
+                            <div class="row">
+                              <div class="col-11">
+                                <div class="form-group">
+                                  <label>First Name</label>
+                                  <input type="text" class="form-control inp" formControlName="customerFirstName" required
+                                    autofocus />
+                                </div>
+                              </div>
+                              <div class="col-11">
+                                <div class="form-group">
+                                  <label>Last Name</label>
+                                  <input type="email" class="form-control inp" formControlName="customerLastName" required />
+                                </div>
+                              </div>
+                              <div class="col-11">
+                                <div class="form-group">
+                                  <label>User Name</label>
+                                  <input type="text" class="form-control inp" formControlName="customerUsername" required />
+                                </div>
+                              </div>
+                              <div class="col-11">
+                                <div class="form-group">
+                                  <label>Address</label>
+                                  <input type="text" class="form-control inp" formControlName="customerAddress" required />
+                                </div>
+                              </div>
+                              <div class="col-11">
+                                <div class="form-group">
+                                  <label>Gender</label>
+                                  <div class="btn-group btn-group-toggle ml-4" ngbRadioGroup name="radioBasic">
+                                    <label ngbButtonLabel class="btn but">
+                                      <input ngbButton type="radio" class="form-control inp" formControlName="customerGender"
+                                        required value="Male" />
+                                      Male
+                                    </label>
+                                    <label ngbButtonLabel class="btn but">
+                                      <input ngbButton type="radio" class="form-control inp" formControlName="customerGender"
+                                        required value="Female" />
+                                      Female
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-11">
+                                <div class="form-group">
+                                  <label>Phone</label>
+                                  <input type="text" class="form-control inp" formControlName="customerPhone" required />
+                                </div>
+                              </div>
+                              <div class="col-11">
+                                <div class="form-group">
+                                  <label>Email</label>
+                                  <input type="text" class="form-control inp" formControlName="customerEmail" required />
+                                </div>
+                              </div>
+                              <div class="col-11">
+                                <div class="form-group">
+                                  <label>Password</label>
+                                  <input type="password" class="form-control inp" formControlName="customerPassword" required />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </section>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-outline-secondary canc" (click)="modal.dismiss('cancel click')">
+                        Cancel
+                      </button>
+                      <button type="button" class="btn but" (click)="submitRegistration()" (click)="modal.close('Ok click')">
+                        Sign Up
+                      </button>
+                    </div>
+                  </ng-template>
+                </ngb-tab>
+              </ngb-tabset>
+            </div>
+          </ng-template>
+        </div>
+        <app-search></app-search>
+      </div>
+    </nav>
+  </div>
+</header>
+<router-outlet #o="outlet"></router-outlet>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
